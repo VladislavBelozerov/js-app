@@ -15,8 +15,10 @@ export default defineConfig({
     lib: {
       name: 'JsApp',
       entry: resolve(__dirname, 'lib/main.ts'),
-      formats: ['es', 'umd'],
-      fileName: (format) => `js-app.${format}.js`,
+      formats: ['es'],
+    },
+    rollupOptions: {
+      output: {},
     },
   },
 })
