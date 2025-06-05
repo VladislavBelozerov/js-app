@@ -1,5 +1,5 @@
 {
-  "name": "js-app",
+  "name": "@vladislavbelozerov/js-app",
   "private": false,
   "description": "A lightweight and flexible JavaScript application framework for building modular and scalable web applications",
   "version": "0.1.0-beta.1",
@@ -13,6 +13,12 @@
     "type": "git",
     "url": "https://github.com/VladislavBelozerov/js-app"
   },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
