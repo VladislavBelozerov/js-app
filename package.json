@@ -2,7 +2,7 @@
   "name": "@vladislavbelozerov/js-app",
   "private": false,
   "description": "A lightweight and flexible JavaScript application framework for building modular and scalable web applications",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0",
   "type": "module",
   "main": "./dist/js-app.umd.js",
   "module": "./dist/js-app.es.js",
