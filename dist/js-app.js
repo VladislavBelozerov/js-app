@@ -67,7 +67,7 @@ function M(e) {
 function we(e) {
   return e.split("");
 }
-var I = "\\ud800-\\udfff", Ue = "\\u0300-\\u036f", Ee = "\\ufe20-\\ufe2f", Me = "\\u20d0-\\u20ff", Ie = Ue + Ee + Me, Le = "\\ufe0e\\ufe0f", ze = "[" + I + "]", $ = "[" + Ie + "]", A = "\\ud83c[\\udffb-\\udfff]", De = "(?:" + $ + "|" + A + ")", L = "[^" + I + "]", z = "(?:\\ud83c[\\udde6-\\uddff]){2}", D = "[\\ud800-\\udbff][\\udc00-\\udfff]", ke = "\\u200d", k = De + "?", N = "[" + Le + "]?", Ne = "(?:" + ke + "(?:" + [L, z, D].join("|") + ")" + N + k + ")*", Ze = N + k + Ne, Ve = "(?:" + [L + $ + "?", $, z, D, ze].join("|") + ")", We = RegExp(A + "(?=" + A + ")|" + Ve + Ze, "g");
+var L = "\\ud800-\\udfff", Ue = "\\u0300-\\u036f", Ee = "\\ufe20-\\ufe2f", Me = "\\u20d0-\\u20ff", Le = Ue + Ee + Me, Ie = "\\ufe0e\\ufe0f", ze = "[" + L + "]", $ = "[" + Le + "]", A = "\\ud83c[\\udffb-\\udfff]", De = "(?:" + $ + "|" + A + ")", I = "[^" + L + "]", z = "(?:\\ud83c[\\udde6-\\uddff]){2}", D = "[\\ud800-\\udbff][\\udc00-\\udfff]", ke = "\\u200d", k = De + "?", N = "[" + Ie + "]?", Ne = "(?:" + ke + "(?:" + [I, z, D].join("|") + ")" + N + k + ")*", Ze = N + k + Ne, Ve = "(?:" + [I + $ + "?", $, z, D, ze].join("|") + ")", We = RegExp(A + "(?=" + A + ")|" + Ve + Ze, "g");
 function Pe(e) {
   return e.match(We) || [];
 }
@@ -316,10 +316,10 @@ function Er(e) {
 function Mr(e, r, t) {
   return e = m(e), r = r, r === void 0 ? fr(e) ? Er(e) : sr(e) : e.match(r) || [];
 }
-var Ir = "['’]", Lr = RegExp(Ir, "g");
+var Lr = "['’]", Ir = RegExp(Lr, "g");
 function Q(e) {
   return function(r) {
-    return Be(Mr(ur(r).replace(Lr, "")), e, "");
+    return Be(Mr(ur(r).replace(Ir, "")), e, "");
   };
 }
 var zr = Q(function(e, r, t) {
@@ -336,7 +336,7 @@ function Jr(e) {
 function Dr(e, r) {
   e.querySelectorAll(r.selector).forEach((t) => {
     var o;
-    if (t.hasAttribute(`data-component-${c(r.name)}-id`) || R.value && !R.value(r) || r.initCondition && !r.initCondition(r))
+    if (t.hasAttribute(`data-component-${c(r.name)}-id`) || R.value && !R.value(t, r) || r.initCondition && !r.initCondition(t, r))
       return;
     const n = ((o = r.component) == null ? void 0 : o.call(r, t, r.props ?? {})) ?? {}, u = re(`component-${r.name}-`);
     t.setAttribute("data-component", ""), t.setAttribute(`data-component-${c(r.name)}-id`, u), s.components.set(u, {
@@ -525,7 +525,7 @@ export {
   Fr as initApp,
   kr as initComponents,
   Br as registerComponent,
-  Jr as setGlobalInitIgnore,
+  Jr as setGlobalInitCondition,
   Kr as useBeforeDestroy,
   qr as useBeforeUpdate,
   Qr as useDestroyed,
