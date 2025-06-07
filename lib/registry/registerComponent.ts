@@ -11,22 +11,6 @@ export function registerComponent<Props = JsAppComponentProps>(
     component,
     props: (props ?? {}) as Props,
     selector,
-    asyncComponent: undefined,
-    name,
-  }
-}
-
-export function registerAsyncComponent<Props = JsAppComponentProps>(
-  name: string,
-  selector: string,
-  asyncComponent: () => Promise<JsAppComponent<Props>>,
-  props?: Props,
-): RegistryRecord<Props> {
-  return {
-    component: undefined,
-    props: (props ?? {}) as Props,
-    selector,
-    asyncComponent,
     name,
   }
 }

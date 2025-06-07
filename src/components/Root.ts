@@ -1,23 +1,20 @@
-import { useGetRef } from '../../lib/hooks/useGetRef.ts'
-import { useReady } from '../../lib/hooks/useReady.ts'
+import { useRef } from '../../lib/hooks/useRef.ts'
 
 export interface RootProps {
   strData?: string
 }
 
-export function Root(element: HTMLElement, { strData }: RootProps) {
-  console.log(strData)
-
+export function Root(element: HTMLElement) {
   const buttonEl = element.querySelector('button')
-  const buttonRef = useGetRef(buttonEl as HTMLElement, 'button')
+  const buttonRef = useRef(buttonEl as HTMLElement, 'button')
 
-  useReady(() => {
-    console.log(buttonRef.current)
+  buttonRef.subscribe((ref) => {
+    console.log('Button ref updated:', ref)
   })
 
   return {
     destroy() {
-      console.log('Root component destroyed')
+      buttonRef.complete()
     },
   }
 }

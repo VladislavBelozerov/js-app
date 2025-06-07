@@ -1,11 +1,13 @@
-import { useGetProps } from '../../lib/hooks/useGetProps.ts'
+import { useProps } from '../../lib/hooks/useProps.ts'
 
 export interface ButtonProps {
   text?: string
 }
 
 export function Button(element: HTMLElement, { text = 'test' }: ButtonProps) {
-  const props = useGetProps(element, 'button', { text })
+  console.log('Button element:', element)
+
+  const props = useProps(element, 'button', { text })
 
   return {
     text: props.text,

@@ -1,12 +1,25 @@
-export { App, initApp } from './App.ts'
-export {
-  registerComponent,
-  registerAsyncComponent,
-} from './registry/registerComponent'
+// App
+export { App, initApp, destroyApp } from './App.ts'
+export { registerComponent } from './registry/registerComponent'
+
+// Registry
 export { addToRegistry } from './registry/addToRegistry'
-export { useEmitter } from './hooks/useEmitter'
-export { initComponents } from './component/initComponents.ts'
+
+// Component
+export {
+  initComponents,
+  setGlobalInitIgnore,
+} from './component/initComponents.ts'
 export { destroyComponents } from './component/destroyComponents.ts'
-export { useGetProps } from './hooks/useGetProps'
-export { useGetRef } from './hooks/useGetRef'
-export { useReady } from './hooks/useReady'
+
+// Hooks
+export { useReady } from './hooks/useReady.ts'
+export { useBeforeUpdate } from './hooks/useBeforeUpdate.ts'
+export { useUpdated } from './hooks/useUpdated.ts'
+export { useBeforeDestroy } from './hooks/useBeforeDestroy.ts'
+export { useDestroyed } from './hooks/useDestroyed.ts'
+
+export { useProps } from './hooks/useProps.ts'
+export { useStringifyProps } from './hooks/useStringifyProps.ts'
+
+export { useRef } from './hooks/useRef.ts'

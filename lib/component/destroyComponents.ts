@@ -1,29 +1,43 @@
 import { App } from '../App.ts'
 
 export function destroyComponents(root: HTMLElement) {
-  if (!App.isReady) {
+  if (!App.isReady$.getValue()) {
     console.warn('App is not initialized yet.')
     return
   }
 
   const elementsToDestroy: HTMLElement[] = Array.from(
-    root.querySelectorAll('[data-component-id]'),
+    root.querySelectorAll('[data-component]'),
   )
 
-  if (root.hasAttribute('data-component-id')) {
-    elementsToDestroy.push(root)
-  }
-
   for (const element of elementsToDestroy) {
-    const componentId = element.dataset.componentId as string
-    const componentItem = App.components.get(componentId)
+    const componentIds: string[] = []
+    const dataAttributes = Object.keys(element.dataset)
 
-    if (componentItem) {
-      componentItem.ref.destroy?.()
-      App.components.delete(componentId)
-    }
+    dataAttributes.forEach((attr) => {
+      const match = attr.match(/^component(.+)Id$/)
+      if (match) {
+        const componentId = element.dataset[attr]
+        if (componentId) {
+          componentIds.push(componentId)
+        }
+      }
+    })
 
-    element.removeAttribute('data-component-id')
-    element.removeAttribute('data-component-name')
+    componentIds.forEach((componentId) => {
+      const componentItem = App.components.get(componentId)
+      if (componentItem) {
+        componentItem.ref.destroy?.()
+        App.components.delete(componentId)
+      }
+    })
+
+    dataAttributes.forEach((attr) => {
+      if (attr.startsWith('component') && attr.endsWith('Id')) {
+        delete element.dataset[attr]
+      }
+    })
+
+    element.removeAttribute('data-component')
   }
 }

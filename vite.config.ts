@@ -18,7 +18,13 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      output: {},
+      external: ['rxjs', 'rxjs/operators'],
+      output: {
+        globals: {
+          rxjs: 'rxjs',
+          'rxjs/operators': 'rxjs.operators',
+        },
+      },
     },
   },
 })

@@ -1,11 +1,12 @@
 import { App } from '../App.ts'
+import { first } from 'rxjs/operators'
 
 export function useReady(cb: () => void) {
-  if (App.isReady) {
+  if (App.isReady$.getValue()) {
     cb()
     return
   }
-  App.once('ready').then(() => {
+  App.isReady$.pipe(first((isReady) => isReady)).subscribe(() => {
     cb()
   })
 }
