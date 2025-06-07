@@ -3,13 +3,16 @@ import { App } from '../App.ts'
 import type { RegistryRecord } from '../registry'
 import { kebabCase } from 'lodash-es'
 
-export type InitConditionCb = (record: RegistryRecord) => boolean
+export type InitConditionCb = (
+  element: HTMLElement,
+  record: RegistryRecord,
+) => boolean
 
 const globalInitCondition: { value: null | InitConditionCb } = {
   value: null,
 }
 
-export function setGlobalInitIgnore(cb: InitConditionCb) {
+export function setGlobalInitCondition(cb: InitConditionCb) {
   globalInitCondition.value = cb
 }
 
@@ -19,11 +22,17 @@ function initComponent(root: HTMLElement, record: RegistryRecord) {
       return
     }
 
-    if (globalInitCondition.value && !globalInitCondition.value(record)) {
+    if (
+      globalInitCondition.value &&
+      !globalInitCondition.value(element as HTMLElement, record)
+    ) {
       return
     }
 
-    if (record.initCondition && !record.initCondition(record)) {
+    if (
+      record.initCondition &&
+      !record.initCondition(element as HTMLElement, record)
+    ) {
       return
     }
 

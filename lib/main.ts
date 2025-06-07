@@ -8,7 +8,7 @@ export { addToRegistry } from './registry/addToRegistry'
 // Component
 export {
   initComponents,
-  setGlobalInitIgnore,
+  setGlobalInitCondition,
 } from './component/initComponents.ts'
 export { destroyComponents } from './component/destroyComponents.ts'
 
