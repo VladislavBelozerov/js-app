@@ -1,3 +1,3 @@
-import { JsAppComponentRef } from '../component';
 import { BehaviorSubject } from 'rxjs';
-export declare function useRef<Ref = JsAppComponentRef>(element: HTMLElement, name: string): BehaviorSubject<Ref | null>;
+import { JsAppComponent } from '../component';
+export declare function useRef<R extends JsAppComponent>(element: HTMLElement, name: string): BehaviorSubject<ReturnType<R> | null>;

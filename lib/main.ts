@@ -1,5 +1,5 @@
 // App
-export { App, initApp, destroyApp } from './App.ts'
+export { App, initApp, destroyApp, updateApp } from './App.ts'
 export { registerComponent } from './registry/registerComponent'
 
 // Registry

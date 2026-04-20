@@ -5,15 +5,15 @@ import {
   useReady,
   destroyApp,
 } from '../lib/main.ts'
-import { Root, type RootProps } from './components/Root.ts'
-import { Button, type ButtonProps } from './components/Button.ts'
+import { Root } from './components/Root.ts'
+import { Button } from './components/Button.ts'
 import { updateApp } from '../lib/App.ts'
 
 document.addEventListener('DOMContentLoaded', async () => {
   addToRegistry([
-    registerComponent<RootProps>('root', '#app', Root),
-    registerComponent<ButtonProps>('button', 'button', Button),
-    registerComponent<RootProps>('RootTwo', '#app', Root),
+    registerComponent('root', '#app', Root),
+    registerComponent('button', 'button', Button),
+    registerComponent('RootTwo', '#app', Root),
   ])
 
   initApp(document.documentElement)
@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       destroyApp()
 
       addToRegistry([
-        registerComponent<RootProps>('root', '#app', Root),
-        registerComponent<ButtonProps>('button', 'button', Button),
-        registerComponent<RootProps>('RootTwo', '#app', Root),
+        registerComponent('root', '#app', Root),
+        registerComponent('button', 'button', Button),
+        registerComponent('RootTwo', '#app', Root),
       ])
 
       initApp(document.documentElement)

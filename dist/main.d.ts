@@ -1,4 +1,4 @@
-export { App, initApp, destroyApp } from './App.ts';
+export { App, initApp, destroyApp, updateApp } from './App.ts';
 export { registerComponent } from './registry/registerComponent';
 export { addToRegistry } from './registry/addToRegistry';
 export { initComponents, setGlobalInitCondition, } from './component/initComponents.ts';

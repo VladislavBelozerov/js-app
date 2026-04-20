@@ -2,7 +2,7 @@
   "name": "@vladislavbelozerov/js-app",
   "private": false,
   "description": "A lightweight and flexible JavaScript application framework for building modular and scalable web applications",
-  "version": "0.1.0-beta.5",
+  "version": "0.1.0-beta.7",
   "type": "module",
   "main": "./dist/js-app.js",
   "types": "./dist/main.d.ts",
@@ -32,7 +32,6 @@
     "eslint-config-prettier": "^10.1.5",
     "globals": "^16.2.0",
     "prettier": "3.5.3",
-    "rxjs": "^7.8.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.33.1",
     "vite": "^6.3.5",
@@ -41,5 +40,8 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "rxjs": "^7.8.2"
   }
 }
