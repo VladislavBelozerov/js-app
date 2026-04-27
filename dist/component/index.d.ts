@@ -1,5 +1,5 @@
-export type JsAppComponentRef = Record<string, any>;
-export type JsAppComponentProps = Record<string, any>;
+export type JsAppComponentRef = any;
+export type JsAppComponentProps = any;
 export type JsAppComponent<Props = JsAppComponentProps, Interface = JsAppComponentRef> = (element: HTMLElement, props: Props) => Interface;
 export interface ComponentItem {
     id: string;
