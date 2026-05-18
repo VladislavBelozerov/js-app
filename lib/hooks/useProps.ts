@@ -4,7 +4,7 @@ import { kebabCase, camelCase } from 'lodash-es'
 export function useProps<Props = JsAppComponentProps>(
   element: HTMLElement,
   name: string,
-  defaultProps: Props = {} as Props,
+  defaultProps: Partial<Props> = {},
 ) {
   const _name = kebabCase(name)
   const nameLength = name.split('-').length
