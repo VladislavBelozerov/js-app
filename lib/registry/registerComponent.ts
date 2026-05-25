@@ -1,13 +1,13 @@
 import type { JsAppComponent, JsAppComponentProps } from '../component'
 import type { RegistryRecord } from './index.ts'
 
-type PropsOf<C> = C extends (element: HTMLElement, props: infer P) => any
+type PropsOf<C> = C extends (element: infer _El, props: infer P) => any
   ? unknown extends P
     ? JsAppComponentProps
     : P
   : JsAppComponentProps
 
-export function registerComponent<C extends JsAppComponent>(
+export function registerComponent<C extends JsAppComponent<any, any, any>>(
   name: string,
   selector: string,
   component: C,

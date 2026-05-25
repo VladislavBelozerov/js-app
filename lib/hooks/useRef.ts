@@ -4,7 +4,7 @@ import { kebabCase } from 'lodash-es'
 import { BehaviorSubject } from 'rxjs'
 import type {JsAppComponent} from "../component";
 
-export function useRef<R extends JsAppComponent>(
+export function useRef<R extends JsAppComponent<any, any, any>>(
   element: HTMLElement,
   name: string,
 ) {

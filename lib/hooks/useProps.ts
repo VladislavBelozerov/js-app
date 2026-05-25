@@ -1,8 +1,8 @@
 import type { JsAppComponentProps } from '../component'
 import { kebabCase, camelCase } from 'lodash-es'
 
-export function useProps<Props = JsAppComponentProps>(
-  element: HTMLElement,
+export function useProps<Props = JsAppComponentProps, El extends HTMLElement = HTMLElement>(
+  element: El,
   name: string,
   defaultProps: Partial<Props> = {},
 ) {

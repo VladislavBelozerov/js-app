@@ -3,7 +3,8 @@ export type JsAppComponentProps = any
 export type JsAppComponent<
   Props = JsAppComponentProps,
   Interface = JsAppComponentRef,
-> = (element: HTMLElement, props: Props) => Interface
+  El extends HTMLElement = HTMLElement,
+> = (element: El, props: Props) => Interface
 
 export interface ComponentItem {
   id: string

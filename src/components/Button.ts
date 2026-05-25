@@ -4,9 +4,10 @@ export interface ButtonProps {
   text?: string
 }
 
-export function Button(element: HTMLElement, { text = 'test' }: ButtonProps) {
-  console.log('Button element:', element)
-
+export function Button(
+  element: HTMLButtonElement,
+  { text = 'test' }: ButtonProps,
+) {
   const props = useProps(element, 'button', { text })
 
   return {
