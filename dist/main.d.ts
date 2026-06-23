@@ -1,8 +1,8 @@
 export { App, initApp, destroyApp, updateApp } from './App.ts';
 export { registerComponent } from './registry/registerComponent';
 export { addToRegistry } from './registry/addToRegistry';
-export { initComponents, setGlobalInitCondition, } from './component/initComponents.ts';
-export { destroyComponents } from './component/destroyComponents.ts';
+export { initComponents, setGlobalInitCondition, addComponentRecord, } from './component/initComponents.ts';
+export { destroyComponents, removeComponentRecord, } from './component/destroyComponents.ts';
 export { useReady } from './hooks/useReady.ts';
 export { useBeforeUpdate } from './hooks/useBeforeUpdate.ts';
 export { useUpdated } from './hooks/useUpdated.ts';

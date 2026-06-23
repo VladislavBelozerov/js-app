@@ -16,39 +16,44 @@ export function setGlobalInitCondition(cb: InitConditionCb) {
   globalInitCondition.value = cb
 }
 
+export function addComponentRecord<T extends HTMLElement>(
+  element: T,
+  name: string,
+  ref: any,
+  selector?: string,
+) {
+  const id = uid(`component-${name}-`)
+  element.setAttribute(`data-component`, '')
+  element.setAttribute(`data-component-${kebabCase(name)}-id`, id)
+
+  App.components.set(id, {
+    id,
+    selector: selector ?? '',
+    name: name,
+    ref,
+  })
+}
+
 function initComponent(root: HTMLElement, record: RegistryRecord) {
-  root.querySelectorAll(record.selector).forEach((element) => {
+  root.querySelectorAll<HTMLElement>(record.selector).forEach((element) => {
     if (element.hasAttribute(`data-component-${kebabCase(record.name)}-id`)) {
       return
     }
 
     if (
       globalInitCondition.value &&
-      !globalInitCondition.value(element as HTMLElement, record)
+      !globalInitCondition.value(element, record)
     ) {
       return
     }
 
-    if (
-      record.initCondition &&
-      !record.initCondition(element as HTMLElement, record)
-    ) {
+    if (record.initCondition && !record.initCondition(element, record)) {
       return
     }
 
-    const ref =
-      record.component?.(element as HTMLElement, record.props ?? {}) ?? {}
-    const id = uid(`component-${record.name}-`)
+    const ref = record.component?.(element, record.props ?? {}) ?? {}
 
-    element.setAttribute(`data-component`, '')
-    element.setAttribute(`data-component-${kebabCase(record.name)}-id`, id)
-
-    App.components.set(id, {
-      id,
-      selector: record.selector,
-      name: record.name,
-      ref,
-    })
+    addComponentRecord(element, record.name, ref, record.selector)
   })
 }
 

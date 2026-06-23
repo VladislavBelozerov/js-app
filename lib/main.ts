@@ -9,8 +9,12 @@ export { addToRegistry } from './registry/addToRegistry'
 export {
   initComponents,
   setGlobalInitCondition,
+  addComponentRecord,
 } from './component/initComponents.ts'
-export { destroyComponents } from './component/destroyComponents.ts'
+export {
+  destroyComponents,
+  removeComponentRecord,
+} from './component/destroyComponents.ts'
 
 // Hooks
 export { useReady } from './hooks/useReady.ts'

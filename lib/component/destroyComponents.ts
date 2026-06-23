@@ -1,4 +1,18 @@
 import { App } from '../App.ts'
+import { kebabCase } from 'lodash-es'
+
+export function removeComponentRecord<T extends HTMLElement>(
+  element: T,
+  name: string,
+) {
+  const attr = `data-component-${kebabCase(name)}-id`
+  const id = element.getAttribute(attr)
+  if (!id) return
+
+  App.components.delete(id)
+  element.removeAttribute(attr)
+  element.removeAttribute('data-component')
+}
 
 export function destroyComponents(root: HTMLElement) {
   if (!App.isReady$.getValue()) {
