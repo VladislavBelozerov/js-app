@@ -137,7 +137,7 @@ destroyApp()
 
 In addition to the app-level helpers, the library exposes lower-level functions from the component runtime.
 
-### `initComponents(root)`
+### `initComponents(root, options?)`
 
 Scans the given `root` and initializes matching components based on the current registry.
 
@@ -155,8 +155,10 @@ initComponents(document.documentElement)
 import { initComponents } from '@vladislavbelozerov/js-app'
 
 const modal = document.querySelector('#my-modal')
-if (modal) initComponents(modal)
+if (modal) initComponents(modal, { includeRoot: true })
 ```
+
+By default, only descendants of `root` are initialized. Pass `includeRoot: true` to also initialize `root` itself when it matches a registered component selector.
 
 ### `setGlobalInitCondition(cb)`
 
@@ -182,7 +184,7 @@ setGlobalInitCondition((element, record) => {
 })
 ```
 
-### `destroyComponents(root)`
+### `destroyComponents(root, options?)`
 
 Destroys components that were previously initialized under `root`.
 
@@ -200,8 +202,10 @@ destroyComponents(document.documentElement)
 import { destroyComponents } from '@vladislavbelozerov/js-app'
 
 const sidebar = document.querySelector('#sidebar')
-if (sidebar) destroyComponents(sidebar)
+if (sidebar) destroyComponents(sidebar, { includeRoot: true })
 ```
+
+By default, only components below `root` are destroyed. Pass `includeRoot: true` to also destroy components attached to `root` itself.
 
 ## Component structure (recommended)
 

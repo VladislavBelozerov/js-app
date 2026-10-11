@@ -14,15 +14,23 @@ export function removeComponentRecord<T extends HTMLElement>(
   element.removeAttribute('data-component')
 }
 
-export function destroyComponents(root: HTMLElement) {
+export function destroyComponents(
+  root: HTMLElement,
+  options: { includeRoot?: boolean } = {},
+) {
   if (!App.isReady$.getValue()) {
     console.warn('App is not initialized yet.')
     return
   }
 
+  const includeRoot = options.includeRoot ?? false
   const elementsToDestroy: HTMLElement[] = Array.from(
     root.querySelectorAll('[data-component]'),
   )
+
+  if (includeRoot && root.matches('[data-component]')) {
+    elementsToDestroy.unshift(root)
+  }
 
   for (const element of elementsToDestroy) {
     const componentIds: string[] = []

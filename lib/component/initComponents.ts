@@ -34,8 +34,20 @@ export function addComponentRecord<T extends HTMLElement>(
   })
 }
 
-function initComponent(root: HTMLElement, record: RegistryRecord) {
-  root.querySelectorAll<HTMLElement>(record.selector).forEach((element) => {
+function initComponent(
+  root: HTMLElement,
+  record: RegistryRecord,
+  includeRoot: boolean,
+) {
+  const elements = Array.from(
+    root.querySelectorAll<HTMLElement>(record.selector),
+  )
+
+  if (includeRoot && root.matches(record.selector)) {
+    elements.unshift(root)
+  }
+
+  elements.forEach((element) => {
     if (element.hasAttribute(`data-component-${kebabCase(record.name)}-id`)) {
       return
     }
@@ -57,12 +69,18 @@ function initComponent(root: HTMLElement, record: RegistryRecord) {
   })
 }
 
-export function initComponents(root: HTMLElement) {
+export function initComponents(
+  root: HTMLElement,
+  options: { includeRoot?: boolean } = {},
+) {
+  const includeRoot = options.includeRoot ?? false
+
   const itemsToBeInitialized = Array.from(App.registry.values()).filter(
-    ({ selector }) => !!root.querySelector(selector),
+    ({ selector }) =>
+      !!root.querySelector(selector) || (includeRoot && root.matches(selector)),
   )
 
   for (const record of itemsToBeInitialized) {
-    initComponent(root, record)
+    initComponent(root, record, includeRoot)
   }
 }

@@ -1,19 +1,19 @@
 import { BehaviorSubject as y, Subject as g } from "rxjs";
 import { first as ee } from "rxjs/operators";
 let te = 0;
-function re(e = "") {
+function ne(e = "") {
   return `${e}${++te}`;
 }
-var ne = typeof global == "object" && global && global.Object === Object && global, oe = typeof self == "object" && self && self.Object === Object && self, ue = ne || oe || Function("return this")(), b = ue.Symbol, U = Object.prototype, se = U.hasOwnProperty, ie = U.toString, p = b ? b.toStringTag : void 0;
+var re = typeof global == "object" && global && global.Object === Object && global, ue = typeof self == "object" && self && self.Object === Object && self, oe = re || ue || Function("return this")(), b = oe.Symbol, U = Object.prototype, se = U.hasOwnProperty, ie = U.toString, x = b ? b.toStringTag : void 0;
 function fe(e) {
-  var t = se.call(e, p), r = e[p];
+  var t = se.call(e, x), n = e[x];
   try {
-    e[p] = void 0;
-    var n = !0;
+    e[x] = void 0;
+    var u = !0;
   } catch {
   }
-  var o = ie.call(e);
-  return n && (t ? e[p] = r : delete e[p]), o;
+  var r = ie.call(e);
+  return u && (t ? e[x] = n : delete e[x]), r;
 }
 var ae = Object.prototype, ce = ae.toString;
 function de(e) {
@@ -31,9 +31,9 @@ function me(e) {
   return typeof e == "symbol" || xe(e) && pe(e) == ge;
 }
 function ye(e, t) {
-  for (var r = -1, n = e == null ? 0 : e.length, o = Array(n); ++r < n; )
-    o[r] = t(e[r], r, e);
-  return o;
+  for (var n = -1, u = e == null ? 0 : e.length, r = Array(u); ++n < u; )
+    r[n] = t(e[n], n, e);
+  return r;
 }
 var $e = Array.isArray, S = b ? b.prototype : void 0, O = S ? S.toString : void 0;
 function E(e) {
@@ -49,16 +49,16 @@ function E(e) {
 function m(e) {
   return e == null ? "" : E(e);
 }
-function Ae(e, t, r) {
-  var n = -1, o = e.length;
-  t < 0 && (t = -t > o ? 0 : o + t), r = r > o ? o : r, r < 0 && (r += o), o = t > r ? 0 : r - t >>> 0, t >>>= 0;
-  for (var u = Array(o); ++n < o; )
-    u[n] = e[n + t];
-  return u;
+function Ae(e, t, n) {
+  var u = -1, r = e.length;
+  t < 0 && (t = -t > r ? 0 : r + t), n = n > r ? r : n, n < 0 && (n += r), r = t > n ? 0 : n - t >>> 0, t >>>= 0;
+  for (var s = Array(r); ++u < r; )
+    s[u] = e[u + t];
+  return s;
 }
-function Re(e, t, r) {
-  var n = e.length;
-  return r = r === void 0 ? n : r, Ae(e, t, r);
+function Re(e, t, n) {
+  var u = e.length;
+  return n = n === void 0 ? u : n, Ae(e, t, n);
 }
 var he = "\\ud800-\\udfff", Ce = "\\u0300-\\u036f", Se = "\\ufe20-\\ufe2f", Oe = "\\u20d0-\\u20ff", je = Ce + Se + Oe, ve = "\\ufe0e\\ufe0f", Te = "\\u200d", we = RegExp("[" + Te + he + je + ve + "]");
 function M(e) {
@@ -77,18 +77,18 @@ function Je(e) {
 function Fe(e) {
   return function(t) {
     t = m(t);
-    var r = M(t) ? Je(t) : void 0, n = r ? r[0] : t.charAt(0), o = r ? Re(r, 1).join("") : t.slice(1);
-    return n[e]() + o;
+    var n = M(t) ? Je(t) : void 0, u = n ? n[0] : t.charAt(0), r = n ? Re(n, 1).join("") : t.slice(1);
+    return u[e]() + r;
   };
 }
 var Ge = Fe("toUpperCase");
 function Be(e) {
   return Ge(m(e).toLowerCase());
 }
-function _e(e, t, r, n) {
-  for (var o = -1, u = e == null ? 0 : e.length; ++o < u; )
-    r = t(r, e[o], o, e);
-  return r;
+function _e(e, t, n, u) {
+  for (var r = -1, s = e == null ? 0 : e.length; ++r < s; )
+    n = t(n, e[r], r, e);
+  return n;
 }
 function qe(e) {
   return function(t) {
@@ -288,9 +288,9 @@ var Ye = {
   œ: "oe",
   ŉ: "'n",
   ſ: "s"
-}, Ke = qe(Ye), Qe = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, Xe = "\\u0300-\\u036f", et = "\\ufe20-\\ufe2f", tt = "\\u20d0-\\u20ff", rt = Xe + et + tt, nt = "[" + rt + "]", ot = RegExp(nt, "g");
-function ut(e) {
-  return e = m(e), e && e.replace(Qe, Ke).replace(ot, "");
+}, Ke = qe(Ye), Qe = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, Xe = "\\u0300-\\u036f", et = "\\ufe20-\\ufe2f", tt = "\\u20d0-\\u20ff", nt = Xe + et + tt, rt = "[" + nt + "]", ut = RegExp(rt, "g");
+function ot(e) {
+  return e = m(e), e && e.replace(Qe, Ke).replace(ut, "");
 }
 var st = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
 function it(e) {
@@ -313,19 +313,19 @@ var N = "\\ud800-\\udfff", ct = "\\u0300-\\u036f", dt = "\\ufe20-\\ufe2f", lt = 
 function Mt(e) {
   return e.match(Et) || [];
 }
-function Lt(e, t, r) {
+function Lt(e, t, n) {
   return e = m(e), t = t, t === void 0 ? at(e) ? Mt(e) : it(e) : e.match(t) || [];
 }
 var It = "['’]", zt = RegExp(It, "g");
 function Q(e) {
   return function(t) {
-    return _e(Lt(ut(t).replace(zt, "")), e, "");
+    return _e(Lt(ot(t).replace(zt, "")), e, "");
   };
 }
-var Dt = Q(function(e, t, r) {
-  return t = t.toLowerCase(), e + (r ? Be(t) : t);
-}), a = Q(function(e, t, r) {
-  return e + (r ? "-" : "") + t.toLowerCase();
+var Dt = Q(function(e, t, n) {
+  return t = t.toLowerCase(), e + (n ? Be(t) : t);
+}), d = Q(function(e, t, n) {
+  return e + (n ? "-" : "") + t.toLowerCase();
 });
 const R = {
   value: null
@@ -333,207 +333,211 @@ const R = {
 function Ft(e) {
   R.value = e;
 }
-function Vt(e, t, r, n) {
-  const o = re(`component-${t}-`);
-  e.setAttribute("data-component", ""), e.setAttribute(`data-component-${a(t)}-id`, o), s.components.set(o, {
-    id: o,
-    selector: n ?? "",
+function Vt(e, t, n, u) {
+  const r = ne(`component-${t}-`);
+  e.setAttribute("data-component", ""), e.setAttribute(`data-component-${d(t)}-id`, r), o.components.set(r, {
+    id: r,
+    selector: u ?? "",
     name: t,
-    ref: r
+    ref: n
   });
 }
-function kt(e, t) {
-  e.querySelectorAll(t.selector).forEach((r) => {
-    var o;
-    if (r.hasAttribute(`data-component-${a(t.name)}-id`) || R.value && !R.value(r, t) || t.initCondition && !t.initCondition(r, t))
-      return;
-    const n = ((o = t.component) == null ? void 0 : o.call(t, r, t.props ?? {})) ?? {};
-    Vt(r, t.name, n, t.selector);
-  });
-}
-function X(e) {
-  const t = Array.from(s.registry.values()).filter(
-    ({ selector: r }) => !!e.querySelector(r)
+function kt(e, t, n) {
+  const u = Array.from(
+    e.querySelectorAll(t.selector)
   );
-  for (const r of t)
-    kt(e, r);
+  n && e.matches(t.selector) && u.unshift(e), u.forEach((r) => {
+    var i;
+    if (r.hasAttribute(`data-component-${d(t.name)}-id`) || R.value && !R.value(r, t) || t.initCondition && !t.initCondition(r, t))
+      return;
+    const s = ((i = t.component) == null ? void 0 : i.call(t, r, t.props ?? {})) ?? {};
+    Vt(r, t.name, s, t.selector);
+  });
+}
+function X(e, t = {}) {
+  const n = t.includeRoot ?? !1, u = Array.from(o.registry.values()).filter(
+    ({ selector: r }) => !!e.querySelector(r) || n && e.matches(r)
+  );
+  for (const r of u)
+    kt(e, r, n);
 }
 function Gt(e, t) {
-  const r = `data-component-${a(t)}-id`, n = e.getAttribute(r);
-  n && (s.components.delete(n), e.removeAttribute(r), e.removeAttribute("data-component"));
+  const n = `data-component-${d(t)}-id`, u = e.getAttribute(n);
+  u && (o.components.delete(u), e.removeAttribute(n), e.removeAttribute("data-component"));
 }
-function Nt(e) {
-  if (!s.isReady$.getValue()) {
+function Nt(e, t = {}) {
+  if (!o.isReady$.getValue()) {
     console.warn("App is not initialized yet.");
     return;
   }
-  const t = Array.from(
+  const n = t.includeRoot ?? !1, u = Array.from(
     e.querySelectorAll("[data-component]")
   );
-  for (const r of t) {
-    const n = [], o = Object.keys(r.dataset);
-    o.forEach((u) => {
-      if (u.match(/^component(.+)Id$/)) {
-        const f = r.dataset[u];
-        f && n.push(f);
+  n && e.matches("[data-component]") && u.unshift(e);
+  for (const r of u) {
+    const s = [], i = Object.keys(r.dataset);
+    i.forEach((f) => {
+      if (f.match(/^component(.+)Id$/)) {
+        const a = r.dataset[f];
+        a && s.push(a);
       }
-    }), n.forEach((u) => {
-      var f, x;
-      const i = s.components.get(u);
-      i && ((x = (f = i.ref).destroy) == null || x.call(f), s.components.delete(u));
-    }), o.forEach((u) => {
-      u.startsWith("component") && u.endsWith("Id") && delete r.dataset[u];
+    }), s.forEach((f) => {
+      var a, c;
+      const p = o.components.get(f);
+      p && ((c = (a = p.ref).destroy) == null || c.call(a), o.components.delete(f));
+    }), i.forEach((f) => {
+      f.startsWith("component") && f.endsWith("Id") && delete r.dataset[f];
     }), r.removeAttribute("data-component");
   }
 }
 function Zt() {
-  const e = /* @__PURE__ */ new Map(), t = /* @__PURE__ */ new Map(), r = new y(!1), n = new y(null), o = new g(), u = new g(), i = new g(), f = new g();
+  const e = /* @__PURE__ */ new Map(), t = /* @__PURE__ */ new Map(), n = new y(!1), u = new y(null), r = new g(), s = new g(), i = new g(), f = new g();
   return {
     registry: e,
     components: t,
-    isReady$: r,
-    root$: n,
-    updated$: o,
-    beforeUpdate$: u,
+    isReady$: n,
+    root$: u,
+    updated$: r,
+    beforeUpdate$: s,
     beforeDestroy$: i,
     destroyed$: f
   };
 }
-const s = Zt();
+const o = Zt();
 function Bt(e) {
-  if (s.root$.next(e), s.isReady$.getValue()) {
+  if (o.root$.next(e), o.isReady$.getValue()) {
     console.warn("App is already initialized.");
     return;
   }
-  X(e), s.isReady$.next(!0);
+  X(e), o.isReady$.next(!0);
 }
 function _t() {
-  if (!s.isReady$.getValue() || !s.root$.getValue()) {
+  if (!o.isReady$.getValue() || !o.root$.getValue()) {
     console.warn("App is not loaded yet.");
     return;
   }
-  s.beforeDestroy$.next(), Nt(s.root$.getValue()), s.components.clear(), s.registry.clear(), s.isReady$.next(!1), s.root$.next(null), s.destroyed$.next();
+  o.beforeDestroy$.next(), Nt(o.root$.getValue()), o.components.clear(), o.registry.clear(), o.isReady$.next(!1), o.root$.next(null), o.destroyed$.next();
 }
 function qt() {
-  if (!s.isReady$.getValue() || !s.root$.getValue()) {
+  if (!o.isReady$.getValue() || !o.root$.getValue()) {
     console.warn("App is not loaded yet.");
     return;
   }
-  s.beforeUpdate$.next(), X(s.root$.getValue()), s.updated$.next();
+  o.beforeUpdate$.next(), X(o.root$.getValue()), o.updated$.next();
 }
-function Yt(e, t, r, n) {
+function Yt(e, t, n, u) {
   return {
-    component: r,
-    props: n ?? {},
+    component: n,
+    props: u ?? {},
     selector: t,
     name: e
   };
 }
 function Kt(e) {
-  if (Object.isFrozen(s.registry)) {
+  if (Object.isFrozen(o.registry)) {
     console.warn("Cannot add to read-only registry.");
     return;
   }
-  (Array.isArray(e) ? e : [e]).forEach((r) => {
-    s.registry.set(r.name + ":" + r.selector, r);
+  (Array.isArray(e) ? e : [e]).forEach((n) => {
+    o.registry.set(n.name + ":" + n.selector, n);
   });
 }
 function Wt(e) {
-  if (s.isReady$.getValue()) {
+  if (o.isReady$.getValue()) {
     e();
     return;
   }
-  s.isReady$.pipe(ee((t) => t)).subscribe(() => {
+  o.isReady$.pipe(ee((t) => t)).subscribe(() => {
     e();
   });
 }
 function Qt(e) {
-  const { unsubscribe: t } = s.beforeUpdate$.subscribe(() => {
+  const { unsubscribe: t } = o.beforeUpdate$.subscribe(() => {
     e();
   });
   return t;
 }
 function Xt(e) {
-  const { unsubscribe: t } = s.updated$.subscribe(() => {
+  const { unsubscribe: t } = o.updated$.subscribe(() => {
     e();
   });
   return t;
 }
-function er(e) {
-  const { unsubscribe: t } = s.beforeDestroy$.subscribe(() => {
+function en(e) {
+  const { unsubscribe: t } = o.beforeDestroy$.subscribe(() => {
     e();
   });
   return t;
 }
-function tr(e) {
-  const { unsubscribe: t } = s.destroyed$.subscribe(() => {
+function tn(e) {
+  const { unsubscribe: t } = o.destroyed$.subscribe(() => {
     e();
   });
   return t;
 }
-function rr(e, t, r = {}) {
-  const n = a(t), o = t.split("-").length, u = Object.keys(e.dataset).reduce((i, f) => {
-    const x = a(f).split("-").slice(0, o).join("-"), c = e.dataset[f];
-    if (typeof c > "u" || x !== n) return i;
-    const d = Dt(
-      a(f).split("-").slice(o).join("-")
+function nn(e, t, n = {}) {
+  const u = d(t), r = t.split("-").length, s = Object.keys(e.dataset).reduce((i, f) => {
+    const p = d(f).split("-").slice(0, r).join("-"), a = e.dataset[f];
+    if (typeof a > "u" || p !== u) return i;
+    const c = Dt(
+      d(f).split("-").slice(r).join("-")
     );
-    if (!d) return i;
+    if (!c) return i;
     try {
-      i[d] = JSON.parse(c);
+      i[c] = JSON.parse(a);
     } catch {
-      if (c === "" || c === "true")
-        i[d] = !0;
-      else if (c === "false")
-        i[d] = !1;
+      if (a === "" || a === "true")
+        i[c] = !0;
+      else if (a === "false")
+        i[c] = !1;
       else {
-        const h = parseFloat(c);
-        h + "" === c ? i[d] = h : i[d] = c;
+        const h = parseFloat(a);
+        h + "" === a ? i[c] = h : i[c] = a;
       }
     }
     return i;
   }, {});
-  return { ...r, ...u };
+  return { ...n, ...s };
 }
-function nr(e, t) {
-  const r = a(e), n = {};
-  return Object.entries(t).forEach(([o, u]) => {
-    const i = `data-${r}-${a(o)}`;
-    if (u !== void 0)
-      if (u === null)
-        n[i] = "null";
-      else if (u === !0)
-        n[i] = "";
-      else if (u === !1)
-        n[i] = "false";
-      else if (typeof u == "number")
-        n[i] = u.toString();
-      else if (typeof u == "string")
-        n[i] = u;
-      else if (typeof u == "symbol")
-        n[i] = u.toString();
-      else if (typeof u == "function")
-        n[i] = "function";
+function rn(e, t) {
+  const n = d(e), u = {};
+  return Object.entries(t).forEach(([r, s]) => {
+    const i = `data-${n}-${d(r)}`;
+    if (s !== void 0)
+      if (s === null)
+        u[i] = "null";
+      else if (s === !0)
+        u[i] = "";
+      else if (s === !1)
+        u[i] = "false";
+      else if (typeof s == "number")
+        u[i] = s.toString();
+      else if (typeof s == "string")
+        u[i] = s;
+      else if (typeof s == "symbol")
+        u[i] = s.toString();
+      else if (typeof s == "function")
+        u[i] = "function";
       else
         try {
-          n[i] = JSON.stringify(u);
+          u[i] = JSON.stringify(s);
         } catch (f) {
-          console.warn(`Failed to stringify property ${o}:`, f);
+          console.warn(`Failed to stringify property ${r}:`, f);
         }
-  }), n;
+  }), u;
 }
-function or(e, t) {
-  const r = new y(null);
+function un(e, t) {
+  const n = new y(null);
   return Wt(() => {
     setTimeout(() => {
-      var o;
-      const n = e.getAttribute(`data-component-${a(t)}-id`);
-      n && r.next((o = s.components.get(n)) == null ? void 0 : o.ref);
+      var r;
+      const u = e.getAttribute(`data-component-${d(t)}-id`);
+      u && n.next((r = o.components.get(u)) == null ? void 0 : r.ref);
     });
-  }), r;
+  }), n;
 }
 export {
-  s as App,
+  o as App,
   Vt as addComponentRecord,
   Kt as addToRegistry,
   _t as destroyApp,
@@ -544,12 +548,12 @@ export {
   Gt as removeComponentRecord,
   Ft as setGlobalInitCondition,
   qt as updateApp,
-  er as useBeforeDestroy,
+  en as useBeforeDestroy,
   Qt as useBeforeUpdate,
-  tr as useDestroyed,
-  rr as useProps,
+  tn as useDestroyed,
+  nn as useProps,
   Wt as useReady,
-  or as useRef,
-  nr as useStringifyProps,
+  un as useRef,
+  rn as useStringifyProps,
   Xt as useUpdated
 };
