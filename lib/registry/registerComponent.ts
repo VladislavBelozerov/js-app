@@ -20,3 +20,19 @@ export function registerComponent<C extends JsAppComponent<any, any, any>>(
     name,
   }
 }
+
+export function registerAsyncComponent<C extends JsAppComponent<any, any, any>>(
+  name: string,
+  selector: string,
+  asyncComponent: () => Promise<C>,
+  props?: PropsOf<C>,
+): RegistryRecord<PropsOf<C>> {
+  return {
+    asyncComponent: asyncComponent as unknown as () => Promise<
+      JsAppComponent<PropsOf<C>>
+    >,
+    props: (props ?? {}) as PropsOf<C>,
+    selector,
+    name,
+  }
+}

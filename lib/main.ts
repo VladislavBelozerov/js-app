@@ -1,6 +1,9 @@
 // App
 export { App, initApp, destroyApp, updateApp } from './App.ts'
-export { registerComponent } from './registry/registerComponent'
+export {
+  registerComponent,
+  registerAsyncComponent,
+} from './registry/registerComponent'
 
 // Registry
 export { addToRegistry } from './registry/addToRegistry'

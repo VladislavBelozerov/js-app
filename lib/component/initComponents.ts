@@ -2,6 +2,8 @@ import { uid } from '../utils/uid.ts'
 import { App } from '../App.ts'
 import type { RegistryRecord } from '../registry'
 import { kebabCase } from 'lodash-es'
+import { SuspenseLogic } from './suspense-logic.ts'
+import { take } from 'rxjs'
 
 export type InitConditionCb = (
   element: HTMLElement,
@@ -32,6 +34,8 @@ export function addComponentRecord<T extends HTMLElement>(
     name: name,
     ref,
   })
+
+  return id
 }
 
 function initComponent(
@@ -63,9 +67,35 @@ function initComponent(
       return
     }
 
-    const ref = record.component?.(element, record.props ?? {}) ?? {}
+    if ('component' in record) {
+      const ref = record.component(element, record.props ?? {}) ?? {}
+      addComponentRecord(element, record.name, ref, record.selector)
+      return
+    }
 
-    addComponentRecord(element, record.name, ref, record.selector)
+    const suspense = SuspenseLogic(
+      element,
+      record.props ?? {},
+      record.asyncComponent,
+    )
+    const id = addComponentRecord(
+      element,
+      record.name,
+      suspense,
+      record.selector,
+    )
+
+    suspense.ready$.pipe(take(1)).subscribe({
+      next: (ref) => {
+        const component = App.components.get(id)
+        if (component?.ref === suspense) {
+          component.ref = ref
+        }
+      },
+      error: (error: unknown) => {
+        console.error(`Failed to initialize component "${record.name}".`, error)
+      },
+    })
   })
 }
 

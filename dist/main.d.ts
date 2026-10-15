@@ -1,5 +1,5 @@
 export { App, initApp, destroyApp, updateApp } from './App.ts';
-export { registerComponent } from './registry/registerComponent';
+export { registerComponent, registerAsyncComponent, } from './registry/registerComponent';
 export { addToRegistry } from './registry/addToRegistry';
 export { initComponents, setGlobalInitCondition, addComponentRecord, } from './component/initComponents.ts';
 export { destroyComponents, removeComponentRecord, } from './component/destroyComponents.ts';

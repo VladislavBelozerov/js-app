@@ -1,101 +1,101 @@
-import { BehaviorSubject as y, Subject as g } from "rxjs";
-import { first as ee } from "rxjs/operators";
-let te = 0;
-function ne(e = "") {
-  return `${e}${++te}`;
+import { ReplaySubject as ne, take as E, BehaviorSubject as y, Subject as g } from "rxjs";
+import { first as re } from "rxjs/operators";
+let oe = 0;
+function ue(e = "") {
+  return `${e}${++oe}`;
 }
-var re = typeof global == "object" && global && global.Object === Object && global, ue = typeof self == "object" && self && self.Object === Object && self, oe = re || ue || Function("return this")(), b = oe.Symbol, U = Object.prototype, se = U.hasOwnProperty, ie = U.toString, x = b ? b.toStringTag : void 0;
-function fe(e) {
-  var t = se.call(e, x), n = e[x];
+var se = typeof global == "object" && global && global.Object === Object && global, ie = typeof self == "object" && self && self.Object === Object && self, ae = se || ie || Function("return this")(), b = ae.Symbol, M = Object.prototype, fe = M.hasOwnProperty, ce = M.toString, x = b ? b.toStringTag : void 0;
+function de(e) {
+  var t = fe.call(e, x), n = e[x];
   try {
     e[x] = void 0;
-    var u = !0;
+    var o = !0;
   } catch {
   }
-  var r = ie.call(e);
-  return u && (t ? e[x] = n : delete e[x]), r;
+  var r = ce.call(e);
+  return o && (t ? e[x] = n : delete e[x]), r;
 }
-var ae = Object.prototype, ce = ae.toString;
-function de(e) {
-  return ce.call(e);
+var le = Object.prototype, pe = le.toString;
+function be(e) {
+  return pe.call(e);
 }
-var le = "[object Null]", be = "[object Undefined]", C = b ? b.toStringTag : void 0;
-function pe(e) {
-  return e == null ? e === void 0 ? be : le : C && C in Object(e) ? fe(e) : de(e);
+var xe = "[object Null]", ge = "[object Undefined]", C = b ? b.toStringTag : void 0;
+function me(e) {
+  return e == null ? e === void 0 ? ge : xe : C && C in Object(e) ? de(e) : be(e);
 }
-function xe(e) {
+function ye(e) {
   return e != null && typeof e == "object";
 }
-var ge = "[object Symbol]";
-function me(e) {
-  return typeof e == "symbol" || xe(e) && pe(e) == ge;
+var $e = "[object Symbol]";
+function Ae(e) {
+  return typeof e == "symbol" || ye(e) && me(e) == $e;
 }
-function ye(e, t) {
-  for (var n = -1, u = e == null ? 0 : e.length, r = Array(u); ++n < u; )
+function Re(e, t) {
+  for (var n = -1, o = e == null ? 0 : e.length, r = Array(o); ++n < o; )
     r[n] = t(e[n], n, e);
   return r;
 }
-var $e = Array.isArray, S = b ? b.prototype : void 0, O = S ? S.toString : void 0;
-function E(e) {
+var he = Array.isArray, S = b ? b.prototype : void 0, O = S ? S.toString : void 0;
+function L(e) {
   if (typeof e == "string")
     return e;
-  if ($e(e))
-    return ye(e, E) + "";
-  if (me(e))
+  if (he(e))
+    return Re(e, L) + "";
+  if (Ae(e))
     return O ? O.call(e) : "";
   var t = e + "";
   return t == "0" && 1 / e == -1 / 0 ? "-0" : t;
 }
 function m(e) {
-  return e == null ? "" : E(e);
+  return e == null ? "" : L(e);
 }
-function Ae(e, t, n) {
-  var u = -1, r = e.length;
+function Ce(e, t, n) {
+  var o = -1, r = e.length;
   t < 0 && (t = -t > r ? 0 : r + t), n = n > r ? r : n, n < 0 && (n += r), r = t > n ? 0 : n - t >>> 0, t >>>= 0;
-  for (var s = Array(r); ++u < r; )
-    s[u] = e[u + t];
-  return s;
+  for (var u = Array(r); ++o < r; )
+    u[o] = e[o + t];
+  return u;
 }
-function Re(e, t, n) {
-  var u = e.length;
-  return n = n === void 0 ? u : n, Ae(e, t, n);
+function Se(e, t, n) {
+  var o = e.length;
+  return n = n === void 0 ? o : n, Ce(e, t, n);
 }
-var he = "\\ud800-\\udfff", Ce = "\\u0300-\\u036f", Se = "\\ufe20-\\ufe2f", Oe = "\\u20d0-\\u20ff", je = Ce + Se + Oe, ve = "\\ufe0e\\ufe0f", Te = "\\u200d", we = RegExp("[" + Te + he + je + ve + "]");
-function M(e) {
-  return we.test(e);
+var Oe = "\\ud800-\\udfff", je = "\\u0300-\\u036f", ve = "\\ufe20-\\ufe2f", we = "\\u20d0-\\u20ff", Te = je + ve + we, Ue = "\\ufe0e\\ufe0f", Ee = "\\u200d", Me = RegExp("[" + Ee + Oe + Te + Ue + "]");
+function I(e) {
+  return Me.test(e);
 }
-function Ue(e) {
+function Le(e) {
   return e.split("");
 }
-var L = "\\ud800-\\udfff", Ee = "\\u0300-\\u036f", Me = "\\ufe20-\\ufe2f", Le = "\\u20d0-\\u20ff", Ie = Ee + Me + Le, ze = "\\ufe0e\\ufe0f", De = "[" + L + "]", $ = "[" + Ie + "]", A = "\\ud83c[\\udffb-\\udfff]", Ve = "(?:" + $ + "|" + A + ")", I = "[^" + L + "]", z = "(?:\\ud83c[\\udde6-\\uddff]){2}", D = "[\\ud800-\\udbff][\\udc00-\\udfff]", ke = "\\u200d", V = Ve + "?", k = "[" + ze + "]?", Ne = "(?:" + ke + "(?:" + [I, z, D].join("|") + ")" + k + V + ")*", Ze = k + V + Ne, We = "(?:" + [I + $ + "?", $, z, D, De].join("|") + ")", Pe = RegExp(A + "(?=" + A + ")|" + We + Ze, "g");
-function He(e) {
-  return e.match(Pe) || [];
-}
+var z = "\\ud800-\\udfff", Ie = "\\u0300-\\u036f", ze = "\\ufe20-\\ufe2f", ke = "\\u20d0-\\u20ff", De = Ie + ze + ke, Ve = "\\ufe0e\\ufe0f", Ne = "[" + z + "]", $ = "[" + De + "]", A = "\\ud83c[\\udffb-\\udfff]", Ze = "(?:" + $ + "|" + A + ")", k = "[^" + z + "]", D = "(?:\\ud83c[\\udde6-\\uddff]){2}", V = "[\\ud800-\\udbff][\\udc00-\\udfff]", Pe = "\\u200d", N = Ze + "?", Z = "[" + Ve + "]?", We = "(?:" + Pe + "(?:" + [k, D, V].join("|") + ")" + Z + N + ")*", _e = Z + N + We, Fe = "(?:" + [k + $ + "?", $, D, V, Ne].join("|") + ")", He = RegExp(A + "(?=" + A + ")|" + Fe + _e, "g");
 function Je(e) {
-  return M(e) ? He(e) : Ue(e);
+  return e.match(He) || [];
 }
-function Fe(e) {
+function Ge(e) {
+  return I(e) ? Je(e) : Le(e);
+}
+function Be(e) {
   return function(t) {
     t = m(t);
-    var n = M(t) ? Je(t) : void 0, u = n ? n[0] : t.charAt(0), r = n ? Re(n, 1).join("") : t.slice(1);
-    return u[e]() + r;
+    var n = I(t) ? Ge(t) : void 0, o = n ? n[0] : t.charAt(0), r = n ? Se(n, 1).join("") : t.slice(1);
+    return o[e]() + r;
   };
 }
-var Ge = Fe("toUpperCase");
-function Be(e) {
-  return Ge(m(e).toLowerCase());
+var qe = Be("toUpperCase");
+function Ye(e) {
+  return qe(m(e).toLowerCase());
 }
-function _e(e, t, n, u) {
-  for (var r = -1, s = e == null ? 0 : e.length; ++r < s; )
+function Ke(e, t, n, o) {
+  for (var r = -1, u = e == null ? 0 : e.length; ++r < u; )
     n = t(n, e[r], r, e);
   return n;
 }
-function qe(e) {
+function Qe(e) {
   return function(t) {
     return e == null ? void 0 : e[t];
   };
 }
-var Ye = {
+var Xe = {
   // Latin-1 Supplement block.
   À: "A",
   Á: "A",
@@ -288,272 +288,332 @@ var Ye = {
   œ: "oe",
   ŉ: "'n",
   ſ: "s"
-}, Ke = qe(Ye), Qe = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, Xe = "\\u0300-\\u036f", et = "\\ufe20-\\ufe2f", tt = "\\u20d0-\\u20ff", nt = Xe + et + tt, rt = "[" + nt + "]", ut = RegExp(rt, "g");
-function ot(e) {
-  return e = m(e), e && e.replace(Qe, Ke).replace(ut, "");
-}
-var st = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
-function it(e) {
-  return e.match(st) || [];
-}
-var ft = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+}, et = Qe(Xe), tt = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, nt = "\\u0300-\\u036f", rt = "\\ufe20-\\ufe2f", ot = "\\u20d0-\\u20ff", ut = nt + rt + ot, st = "[" + ut + "]", it = RegExp(st, "g");
 function at(e) {
-  return ft.test(e);
+  return e = m(e), e && e.replace(tt, et).replace(it, "");
 }
-var N = "\\ud800-\\udfff", ct = "\\u0300-\\u036f", dt = "\\ufe20-\\ufe2f", lt = "\\u20d0-\\u20ff", bt = ct + dt + lt, Z = "\\u2700-\\u27bf", W = "a-z\\xdf-\\xf6\\xf8-\\xff", pt = "\\xac\\xb1\\xd7\\xf7", xt = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", gt = "\\u2000-\\u206f", mt = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", yt = "\\ufe0e\\ufe0f", H = pt + xt + gt + mt, J = "['’]", j = "[" + H + "]", $t = "[" + bt + "]", F = "\\d+", At = "[" + Z + "]", G = "[" + W + "]", B = "[^" + N + H + F + Z + W + P + "]", Rt = "\\ud83c[\\udffb-\\udfff]", ht = "(?:" + $t + "|" + Rt + ")", Ct = "[^" + N + "]", _ = "(?:\\ud83c[\\udde6-\\uddff]){2}", q = "[\\ud800-\\udbff][\\udc00-\\udfff]", l = "[" + P + "]", St = "\\u200d", v = "(?:" + G + "|" + B + ")", Ot = "(?:" + l + "|" + B + ")", T = "(?:" + J + "(?:d|ll|m|re|s|t|ve))?", w = "(?:" + J + "(?:D|LL|M|RE|S|T|VE))?", Y = ht + "?", K = "[" + yt + "]?", jt = "(?:" + St + "(?:" + [Ct, _, q].join("|") + ")" + K + Y + ")*", vt = "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", Tt = "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", wt = K + Y + jt, Ut = "(?:" + [At, _, q].join("|") + ")" + wt, Et = RegExp([
-  l + "?" + G + "+" + T + "(?=" + [j, l, "$"].join("|") + ")",
-  Ot + "+" + w + "(?=" + [j, l + v, "$"].join("|") + ")",
-  l + "?" + v + "+" + T,
-  l + "+" + w,
-  Tt,
-  vt,
-  F,
-  Ut
+var ft = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+function ct(e) {
+  return e.match(ft) || [];
+}
+var dt = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+function lt(e) {
+  return dt.test(e);
+}
+var P = "\\ud800-\\udfff", pt = "\\u0300-\\u036f", bt = "\\ufe20-\\ufe2f", xt = "\\u20d0-\\u20ff", gt = pt + bt + xt, W = "\\u2700-\\u27bf", _ = "a-z\\xdf-\\xf6\\xf8-\\xff", mt = "\\xac\\xb1\\xd7\\xf7", yt = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", $t = "\\u2000-\\u206f", At = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", F = "A-Z\\xc0-\\xd6\\xd8-\\xde", Rt = "\\ufe0e\\ufe0f", H = mt + yt + $t + At, J = "['’]", j = "[" + H + "]", ht = "[" + gt + "]", G = "\\d+", Ct = "[" + W + "]", B = "[" + _ + "]", q = "[^" + P + H + G + W + _ + F + "]", St = "\\ud83c[\\udffb-\\udfff]", Ot = "(?:" + ht + "|" + St + ")", jt = "[^" + P + "]", Y = "(?:\\ud83c[\\udde6-\\uddff]){2}", K = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + F + "]", vt = "\\u200d", v = "(?:" + B + "|" + q + ")", wt = "(?:" + p + "|" + q + ")", w = "(?:" + J + "(?:d|ll|m|re|s|t|ve))?", T = "(?:" + J + "(?:D|LL|M|RE|S|T|VE))?", Q = Ot + "?", X = "[" + Rt + "]?", Tt = "(?:" + vt + "(?:" + [jt, Y, K].join("|") + ")" + X + Q + ")*", Ut = "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", Et = "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", Mt = X + Q + Tt, Lt = "(?:" + [Ct, Y, K].join("|") + ")" + Mt, It = RegExp([
+  p + "?" + B + "+" + w + "(?=" + [j, p, "$"].join("|") + ")",
+  wt + "+" + T + "(?=" + [j, p + v, "$"].join("|") + ")",
+  p + "?" + v + "+" + w,
+  p + "+" + T,
+  Et,
+  Ut,
+  G,
+  Lt
 ].join("|"), "g");
-function Mt(e) {
-  return e.match(Et) || [];
+function zt(e) {
+  return e.match(It) || [];
 }
-function Lt(e, t, n) {
-  return e = m(e), t = t, t === void 0 ? at(e) ? Mt(e) : it(e) : e.match(t) || [];
+function kt(e, t, n) {
+  return e = m(e), t = t, t === void 0 ? lt(e) ? zt(e) : ct(e) : e.match(t) || [];
 }
-var It = "['’]", zt = RegExp(It, "g");
-function Q(e) {
+var Dt = "['’]", Vt = RegExp(Dt, "g");
+function ee(e) {
   return function(t) {
-    return _e(Lt(ot(t).replace(zt, "")), e, "");
+    return Ke(kt(at(t).replace(Vt, "")), e, "");
   };
 }
-var Dt = Q(function(e, t, n) {
-  return t = t.toLowerCase(), e + (n ? Be(t) : t);
-}), d = Q(function(e, t, n) {
+var Nt = ee(function(e, t, n) {
+  return t = t.toLowerCase(), e + (n ? Ye(t) : t);
+}), l = ee(function(e, t, n) {
   return e + (n ? "-" : "") + t.toLowerCase();
 });
+function Zt(e, t, n) {
+  const o = new ne(1), r = new AbortController(), u = () => {
+    r.abort(), o.complete();
+  };
+  return Promise.resolve().then(() => {
+    if (!r.signal.aborted)
+      return n();
+  }).then((s) => {
+    if (!r.signal.aborted && s) {
+      const a = s(e, t) ?? {};
+      o.next(a), u();
+    }
+  }).catch((s) => {
+    r.signal.aborted || (o.error(s), u());
+  }), {
+    __suspense: !0,
+    ready$: o,
+    destroy: u
+  };
+}
 const R = {
   value: null
 };
-function Ft(e) {
+function Bt(e) {
   R.value = e;
 }
-function Vt(e, t, n, u) {
-  const r = ne(`component-${t}-`);
-  e.setAttribute("data-component", ""), e.setAttribute(`data-component-${d(t)}-id`, r), o.components.set(r, {
+function U(e, t, n, o) {
+  const r = ue(`component-${t}-`);
+  return e.setAttribute("data-component", ""), e.setAttribute(`data-component-${l(t)}-id`, r), i.components.set(r, {
     id: r,
-    selector: u ?? "",
+    selector: o ?? "",
     name: t,
     ref: n
-  });
+  }), r;
 }
-function kt(e, t, n) {
-  const u = Array.from(
+function Pt(e, t, n) {
+  const o = Array.from(
     e.querySelectorAll(t.selector)
   );
-  n && e.matches(t.selector) && u.unshift(e), u.forEach((r) => {
-    var i;
-    if (r.hasAttribute(`data-component-${d(t.name)}-id`) || R.value && !R.value(r, t) || t.initCondition && !t.initCondition(r, t))
+  n && e.matches(t.selector) && o.unshift(e), o.forEach((r) => {
+    if (r.hasAttribute(`data-component-${l(t.name)}-id`) || R.value && !R.value(r, t) || t.initCondition && !t.initCondition(r, t))
       return;
-    const s = ((i = t.component) == null ? void 0 : i.call(t, r, t.props ?? {})) ?? {};
-    Vt(r, t.name, s, t.selector);
+    if ("component" in t) {
+      const a = t.component(r, t.props ?? {}) ?? {};
+      U(r, t.name, a, t.selector);
+      return;
+    }
+    const u = Zt(
+      r,
+      t.props ?? {},
+      t.asyncComponent
+    ), s = U(
+      r,
+      t.name,
+      u,
+      t.selector
+    );
+    u.ready$.pipe(E(1)).subscribe({
+      next: (a) => {
+        const c = i.components.get(s);
+        (c == null ? void 0 : c.ref) === u && (c.ref = a);
+      },
+      error: (a) => {
+        console.error(`Failed to initialize component "${t.name}".`, a);
+      }
+    });
   });
 }
-function X(e, t = {}) {
-  const n = t.includeRoot ?? !1, u = Array.from(o.registry.values()).filter(
+function te(e, t = {}) {
+  const n = t.includeRoot ?? !1, o = Array.from(i.registry.values()).filter(
     ({ selector: r }) => !!e.querySelector(r) || n && e.matches(r)
   );
-  for (const r of u)
-    kt(e, r, n);
+  for (const r of o)
+    Pt(e, r, n);
 }
-function Gt(e, t) {
-  const n = `data-component-${d(t)}-id`, u = e.getAttribute(n);
-  u && (o.components.delete(u), e.removeAttribute(n), e.removeAttribute("data-component"));
+function qt(e, t) {
+  const n = `data-component-${l(t)}-id`, o = e.getAttribute(n);
+  o && (i.components.delete(o), e.removeAttribute(n), e.removeAttribute("data-component"));
 }
-function Nt(e, t = {}) {
-  if (!o.isReady$.getValue()) {
+function Wt(e, t = {}) {
+  if (!i.isReady$.getValue()) {
     console.warn("App is not initialized yet.");
     return;
   }
-  const n = t.includeRoot ?? !1, u = Array.from(
+  const n = t.includeRoot ?? !1, o = Array.from(
     e.querySelectorAll("[data-component]")
   );
-  n && e.matches("[data-component]") && u.unshift(e);
-  for (const r of u) {
-    const s = [], i = Object.keys(r.dataset);
-    i.forEach((f) => {
-      if (f.match(/^component(.+)Id$/)) {
-        const a = r.dataset[f];
-        a && s.push(a);
+  n && e.matches("[data-component]") && o.unshift(e);
+  for (const r of o) {
+    const u = [], s = Object.keys(r.dataset);
+    s.forEach((a) => {
+      if (a.match(/^component(.+)Id$/)) {
+        const f = r.dataset[a];
+        f && u.push(f);
       }
-    }), s.forEach((f) => {
-      var a, c;
-      const p = o.components.get(f);
-      p && ((c = (a = p.ref).destroy) == null || c.call(a), o.components.delete(f));
-    }), i.forEach((f) => {
-      f.startsWith("component") && f.endsWith("Id") && delete r.dataset[f];
+    }), u.forEach((a) => {
+      var f, d;
+      const c = i.components.get(a);
+      c && ((d = (f = c.ref).destroy) == null || d.call(f), i.components.delete(a));
+    }), s.forEach((a) => {
+      a.startsWith("component") && a.endsWith("Id") && delete r.dataset[a];
     }), r.removeAttribute("data-component");
   }
 }
-function Zt() {
-  const e = /* @__PURE__ */ new Map(), t = /* @__PURE__ */ new Map(), n = new y(!1), u = new y(null), r = new g(), s = new g(), i = new g(), f = new g();
+function _t() {
+  const e = /* @__PURE__ */ new Map(), t = /* @__PURE__ */ new Map(), n = new y(!1), o = new y(null), r = new g(), u = new g(), s = new g(), a = new g();
   return {
     registry: e,
     components: t,
     isReady$: n,
-    root$: u,
+    root$: o,
     updated$: r,
-    beforeUpdate$: s,
-    beforeDestroy$: i,
-    destroyed$: f
+    beforeUpdate$: u,
+    beforeDestroy$: s,
+    destroyed$: a
   };
 }
-const o = Zt();
-function Bt(e) {
-  if (o.root$.next(e), o.isReady$.getValue()) {
+const i = _t();
+function Yt(e) {
+  if (i.root$.next(e), i.isReady$.getValue()) {
     console.warn("App is already initialized.");
     return;
   }
-  X(e), o.isReady$.next(!0);
+  te(e), i.isReady$.next(!0);
 }
-function _t() {
-  if (!o.isReady$.getValue() || !o.root$.getValue()) {
+function Kt() {
+  if (!i.isReady$.getValue() || !i.root$.getValue()) {
     console.warn("App is not loaded yet.");
     return;
   }
-  o.beforeDestroy$.next(), Nt(o.root$.getValue()), o.components.clear(), o.registry.clear(), o.isReady$.next(!1), o.root$.next(null), o.destroyed$.next();
+  i.beforeDestroy$.next(), Wt(i.root$.getValue()), i.components.clear(), i.registry.clear(), i.isReady$.next(!1), i.root$.next(null), i.destroyed$.next();
 }
-function qt() {
-  if (!o.isReady$.getValue() || !o.root$.getValue()) {
+function Qt() {
+  if (!i.isReady$.getValue() || !i.root$.getValue()) {
     console.warn("App is not loaded yet.");
     return;
   }
-  o.beforeUpdate$.next(), X(o.root$.getValue()), o.updated$.next();
+  i.beforeUpdate$.next(), te(i.root$.getValue()), i.updated$.next();
 }
-function Yt(e, t, n, u) {
+function Xt(e, t, n, o) {
   return {
     component: n,
-    props: u ?? {},
+    props: o ?? {},
     selector: t,
     name: e
   };
 }
-function Kt(e) {
-  if (Object.isFrozen(o.registry)) {
+function en(e, t, n, o) {
+  return {
+    asyncComponent: n,
+    props: o ?? {},
+    selector: t,
+    name: e
+  };
+}
+function tn(e) {
+  if (Object.isFrozen(i.registry)) {
     console.warn("Cannot add to read-only registry.");
     return;
   }
   (Array.isArray(e) ? e : [e]).forEach((n) => {
-    o.registry.set(n.name + ":" + n.selector, n);
+    i.registry.set(n.name + ":" + n.selector, n);
   });
 }
-function Wt(e) {
-  if (o.isReady$.getValue()) {
+function Ft(e) {
+  if (i.isReady$.getValue()) {
     e();
     return;
   }
-  o.isReady$.pipe(ee((t) => t)).subscribe(() => {
+  i.isReady$.pipe(re((t) => t)).subscribe(() => {
     e();
   });
 }
-function Qt(e) {
-  const { unsubscribe: t } = o.beforeUpdate$.subscribe(() => {
-    e();
-  });
-  return t;
-}
-function Xt(e) {
-  const { unsubscribe: t } = o.updated$.subscribe(() => {
+function nn(e) {
+  const { unsubscribe: t } = i.beforeUpdate$.subscribe(() => {
     e();
   });
   return t;
 }
-function en(e) {
-  const { unsubscribe: t } = o.beforeDestroy$.subscribe(() => {
+function rn(e) {
+  const { unsubscribe: t } = i.updated$.subscribe(() => {
     e();
   });
   return t;
 }
-function tn(e) {
-  const { unsubscribe: t } = o.destroyed$.subscribe(() => {
+function on(e) {
+  const { unsubscribe: t } = i.beforeDestroy$.subscribe(() => {
     e();
   });
   return t;
 }
-function nn(e, t, n = {}) {
-  const u = d(t), r = t.split("-").length, s = Object.keys(e.dataset).reduce((i, f) => {
-    const p = d(f).split("-").slice(0, r).join("-"), a = e.dataset[f];
-    if (typeof a > "u" || p !== u) return i;
-    const c = Dt(
-      d(f).split("-").slice(r).join("-")
+function un(e) {
+  const { unsubscribe: t } = i.destroyed$.subscribe(() => {
+    e();
+  });
+  return t;
+}
+function sn(e, t, n = {}) {
+  const o = l(t), r = t.split("-").length, u = Object.keys(e.dataset).reduce((s, a) => {
+    const c = l(a).split("-").slice(0, r).join("-"), f = e.dataset[a];
+    if (typeof f > "u" || c !== o) return s;
+    const d = Nt(
+      l(a).split("-").slice(r).join("-")
     );
-    if (!c) return i;
+    if (!d) return s;
     try {
-      i[c] = JSON.parse(a);
+      s[d] = JSON.parse(f);
     } catch {
-      if (a === "" || a === "true")
-        i[c] = !0;
-      else if (a === "false")
-        i[c] = !1;
+      if (f === "" || f === "true")
+        s[d] = !0;
+      else if (f === "false")
+        s[d] = !1;
       else {
-        const h = parseFloat(a);
-        h + "" === a ? i[c] = h : i[c] = a;
+        const h = parseFloat(f);
+        h + "" === f ? s[d] = h : s[d] = f;
       }
     }
-    return i;
+    return s;
   }, {});
-  return { ...n, ...s };
+  return { ...n, ...u };
 }
-function rn(e, t) {
-  const n = d(e), u = {};
-  return Object.entries(t).forEach(([r, s]) => {
-    const i = `data-${n}-${d(r)}`;
-    if (s !== void 0)
-      if (s === null)
-        u[i] = "null";
-      else if (s === !0)
-        u[i] = "";
-      else if (s === !1)
-        u[i] = "false";
-      else if (typeof s == "number")
-        u[i] = s.toString();
-      else if (typeof s == "string")
-        u[i] = s;
-      else if (typeof s == "symbol")
-        u[i] = s.toString();
-      else if (typeof s == "function")
-        u[i] = "function";
+function an(e, t) {
+  const n = l(e), o = {};
+  return Object.entries(t).forEach(([r, u]) => {
+    const s = `data-${n}-${l(r)}`;
+    if (u !== void 0)
+      if (u === null)
+        o[s] = "null";
+      else if (u === !0)
+        o[s] = "";
+      else if (u === !1)
+        o[s] = "false";
+      else if (typeof u == "number")
+        o[s] = u.toString();
+      else if (typeof u == "string")
+        o[s] = u;
+      else if (typeof u == "symbol")
+        o[s] = u.toString();
+      else if (typeof u == "function")
+        o[s] = "function";
       else
         try {
-          u[i] = JSON.stringify(s);
-        } catch (f) {
-          console.warn(`Failed to stringify property ${r}:`, f);
+          o[s] = JSON.stringify(u);
+        } catch (a) {
+          console.warn(`Failed to stringify property ${r}:`, a);
         }
-  }), u;
+  }), o;
 }
-function un(e, t) {
+function fn(e, t) {
   const n = new y(null);
-  return Wt(() => {
+  return Ft(() => {
     setTimeout(() => {
       var r;
-      const u = e.getAttribute(`data-component-${d(t)}-id`);
-      u && n.next((r = o.components.get(u)) == null ? void 0 : r.ref);
+      const o = e.getAttribute(`data-component-${l(t)}-id`);
+      if (o) {
+        const u = (r = i.components.get(o)) == null ? void 0 : r.ref;
+        u != null && u.__suspense ? u.ready$.pipe(E(1)).subscribe({
+          next: (s) => {
+            n.next(s);
+          },
+          error: (s) => {
+            n.error(s);
+          }
+        }) : n.next(u);
+      }
     });
   }), n;
 }
 export {
-  o as App,
-  Vt as addComponentRecord,
-  Kt as addToRegistry,
-  _t as destroyApp,
-  Nt as destroyComponents,
-  Bt as initApp,
-  X as initComponents,
-  Yt as registerComponent,
-  Gt as removeComponentRecord,
-  Ft as setGlobalInitCondition,
-  qt as updateApp,
-  en as useBeforeDestroy,
-  Qt as useBeforeUpdate,
-  tn as useDestroyed,
-  nn as useProps,
-  Wt as useReady,
-  un as useRef,
-  rn as useStringifyProps,
-  Xt as useUpdated
+  i as App,
+  U as addComponentRecord,
+  tn as addToRegistry,
+  Kt as destroyApp,
+  Wt as destroyComponents,
+  Yt as initApp,
+  te as initComponents,
+  en as registerAsyncComponent,
+  Xt as registerComponent,
+  qt as removeComponentRecord,
+  Bt as setGlobalInitCondition,
+  Qt as updateApp,
+  on as useBeforeDestroy,
+  nn as useBeforeUpdate,
+  un as useDestroyed,
+  sn as useProps,
+  Ft as useReady,
+  fn as useRef,
+  an as useStringifyProps,
+  rn as useUpdated
 };
